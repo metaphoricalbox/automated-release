@@ -32,7 +32,7 @@ jobs:
 
       - name: Build
         run: yarn build
-  
+
   publish:
     name: Publish package to NPM
 
@@ -41,15 +41,15 @@ jobs:
     needs: [build]
 
     steps:
-    - uses: actions/checkout@v2
+      - uses: actions/checkout@v2
 
-    - name: Use Node ${{ matrix.node }}
+      - name: Use Node ${{ matrix.node }}
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node }}
 
-    - name: Publish
-      run: yarn semantic-release
-      env:
-        NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Publish
+        run: yarn semantic-release
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
